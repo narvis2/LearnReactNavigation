@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { View, Text, StyleSheet, Button } from "react-native";
 
 /**
@@ -9,6 +9,11 @@ import { View, Text, StyleSheet, Button } from "react-native";
  *                        네이티브 스택 내비게이터 외에 다른 내비게이터에도 있음
  */
 function DetailScreen({ route, navigation }) {
+  useEffect(() => {
+    navigation.setOptions({
+      title: `상세 정보 - ${route.params.id}`,
+    });
+  }, [navigation]);
   return (
     <View style={styles.block}>
       <Text style={styles.text}>id: {route.params.id}</Text>
@@ -35,7 +40,7 @@ const styles = StyleSheet.create({
     fontSize: 48,
   },
   button: {
-    flexDirection: 'row',
+    flexDirection: "row",
   },
 });
 
